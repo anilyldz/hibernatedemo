@@ -30,10 +30,16 @@ public class HibernatedemoApplication {
         appDAO.save(instructor);
         System.out.println("Saving completed");
 		findInstructor(appDAO, instructor);
+		deleteInstructor(appDAO, instructor);
     }
 
 	private void findInstructor(AppDAO appDAO, Instructor instructor) {
-		System.out.println("Finding instructor: "+ appDAO.findById(instructor.getId()));
+		System.out.println("Finding instructor: " + appDAO.findById(instructor.getId()));
+	}
+
+	private void deleteInstructor(AppDAO appDAO, Instructor instructor) {
+		System.out.println("Deleting instructor: " + instructor);
+		appDAO.deleteInstructorById(instructor.getId());
 	}
 
 }
