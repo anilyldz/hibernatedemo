@@ -29,6 +29,11 @@ public class HibernatedemoApplication {
         System.out.println("Saving instructor: " + instructor);
         appDAO.save(instructor);
         System.out.println("Saving completed");
+		findInstructor(appDAO, instructor);
     }
+
+	private void findInstructor(AppDAO appDAO, Instructor instructor) {
+		System.out.println("Finding instructor: "+ appDAO.findById(instructor.getId()));
+	}
 
 }
