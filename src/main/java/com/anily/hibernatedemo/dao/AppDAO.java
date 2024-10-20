@@ -1,6 +1,7 @@
 package com.anily.hibernatedemo.dao;
 
 import com.anily.hibernatedemo.entity.Instructor;
+import com.anily.hibernatedemo.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -9,5 +10,7 @@ public interface AppDAO {
     Instructor findInstructorById(String id);
 
     void deleteInstructorById(String id);
+
+    InstructorDetail findInstructorDetailById(String id);
 
 }

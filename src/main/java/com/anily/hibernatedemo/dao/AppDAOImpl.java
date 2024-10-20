@@ -1,6 +1,7 @@
 package com.anily.hibernatedemo.dao;
 
 import com.anily.hibernatedemo.entity.Instructor;
+import com.anily.hibernatedemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,5 +33,10 @@ public class AppDAOImpl implements AppDAO {
     public void deleteInstructorById(String id) {
         Instructor tempInstructor = findInstructorById(id);
         entityManager.remove(tempInstructor);
+    }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(String id) {
+        return entityManager.find(InstructorDetail.class, id);
     }
 }
