@@ -34,7 +34,7 @@ public class HibernatedemoApplication {
     }
 
 	private void findInstructor(AppDAO appDAO, Instructor instructor) {
-		System.out.println("Finding instructor: " + appDAO.findById(instructor.getId()));
+		System.out.println("Finding instructor: " + appDAO.findInstructorById(instructor.getId()));
 	}
 
 	private void deleteInstructor(AppDAO appDAO, Instructor instructor) {

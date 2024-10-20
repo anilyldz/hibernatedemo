@@ -6,7 +6,7 @@ public interface AppDAO {
 
     void save(Instructor instructor);
 
-    Instructor findById(String id);
+    Instructor findInstructorById(String id);
 
     void deleteInstructorById(String id);
 
