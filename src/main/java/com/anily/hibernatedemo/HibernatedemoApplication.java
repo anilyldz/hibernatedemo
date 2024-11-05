@@ -20,11 +20,12 @@ public class HibernatedemoApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
 			//createInstructor(appDAO);
-			createInstructorWithCourses(appDAO);
+			//createInstructorWithCourses(appDAO);
+			findInstructorWithCourses(appDAO);
 		};
 	}
 
-    private void createInstructor(AppDAO appDAO) {
+	private void createInstructor(AppDAO appDAO) {
         Instructor instructor = new Instructor("Anil", "Yildiz", "anilyildiz@mail.com");
         InstructorDetail instructorDetail = new InstructorDetail("youtube.com/anilyildiz", "fitness");
         instructor.setInstructorDetail(instructorDetail);
@@ -74,6 +75,15 @@ public class HibernatedemoApplication {
 		System.out.println("Courses : " + instructor.getCourses());
 		appDAO.save(instructor);
 		System.out.println("Saving completed");
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		String id = "1";
+		System.out.println("Finding instructor id: " + id);
+		Instructor instructor = appDAO.findInstructorById(id);
+		System.out.println("Instructor : " + instructor);
+		System.out.println("the associated courses : " + instructor.getCourses());
+		System.out.println("Done");
 	}
 
 }
