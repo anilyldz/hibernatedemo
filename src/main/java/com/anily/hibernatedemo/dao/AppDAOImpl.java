@@ -1,11 +1,15 @@
 package com.anily.hibernatedemo.dao;
 
+import com.anily.hibernatedemo.entity.Course;
 import com.anily.hibernatedemo.entity.Instructor;
 import com.anily.hibernatedemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public class AppDAOImpl implements AppDAO {
@@ -47,5 +51,12 @@ public class AppDAOImpl implements AppDAO {
         //remove the associated object reference
         tempInstructorDetail.getInstructor().setInstructorDetail(null);
         entityManager.remove(tempInstructorDetail);
+    }
+
+    @Override
+    public List<Course> findCoursesByInstructorId(String instructorId) {
+        TypedQuery<Course> query = entityManager.createQuery("from Course where instructor.id=:id", Course.class);
+        query.setParameter("id", instructorId);
+        return query.getResultList();
     }
 }
