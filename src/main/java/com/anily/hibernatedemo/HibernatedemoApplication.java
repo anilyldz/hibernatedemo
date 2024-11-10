@@ -24,7 +24,8 @@ public class HibernatedemoApplication {
 			//createInstructor(appDAO);
 			//createInstructorWithCourses(appDAO);
 			//findInstructorWithCourses(appDAO);
-			findCoursesForInstructor(appDAO);
+			//findCoursesForInstructor(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
 	}
 
@@ -99,5 +100,11 @@ public class HibernatedemoApplication {
 		instructor.setCourses(courses);
 		System.out.println("Courses of Instructor"+ instructor.getCourses());
 	}
-
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		String id = "1";
+		System.out.println("Finding instructor id: " + id);
+		Instructor instructor = appDAO.findInstructorByIdJoinFetch(id);
+		System.out.println("Instructor : " + instructor);
+		System.out.println("Courses of Instructor"+ instructor.getCourses());
+	}
 }
