@@ -27,7 +27,8 @@ public class HibernatedemoApplication {
 			//findCoursesForInstructor(appDAO);
 			//findInstructorWithCoursesJoinFetch(appDAO);
 			//updateInstructor(appDAO);
-			updateCourse(appDAO);
+			//updateCourse(appDAO);
+			deleteInstructor(appDAO);
 		};
 	}
 
@@ -39,8 +40,6 @@ public class HibernatedemoApplication {
 		appDAO.updateCourse(course);
 		System.out.println("Update completed");
 	}
-
-
 
 	private void updateInstructor(AppDAO appDAO) {
 		String id = "1";
@@ -70,9 +69,10 @@ public class HibernatedemoApplication {
 		System.out.println("Finding instructor: " + appDAO.findInstructorById(instructor.getId()));
 	}
 
-	private void deleteInstructor(AppDAO appDAO, Instructor instructor) {
-		System.out.println("Deleting instructor : " + instructor);
-		appDAO.deleteInstructorById(instructor.getId());
+	private void deleteInstructor(AppDAO appDAO) {
+		String id = "1";
+		System.out.println("Deleting instructor id : " + id);
+		appDAO.deleteInstructorById(id);
 	}
 
 	private void findInstructorDetail(AppDAO appDAO, InstructorDetail instructorDetail){
