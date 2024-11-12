@@ -28,9 +28,18 @@ public class HibernatedemoApplication {
 			//findInstructorWithCoursesJoinFetch(appDAO);
 			//updateInstructor(appDAO);
 			//updateCourse(appDAO);
-			deleteInstructor(appDAO);
+			//deleteInstructor(appDAO);
+			deleteCourse(appDAO);
 		};
 	}
+
+	private void deleteCourse(AppDAO appDAO) {
+		String id = "10";
+		System.out.println("Finding course id : " + id);
+		appDAO.deleteCourseById(id);
+		System.out.println("Done");
+	}
+
 
 	private void updateCourse(AppDAO appDAO) {
 		String id = "10";
