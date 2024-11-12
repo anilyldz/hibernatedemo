@@ -26,9 +26,21 @@ public class HibernatedemoApplication {
 			//findInstructorWithCourses(appDAO);
 			//findCoursesForInstructor(appDAO);
 			//findInstructorWithCoursesJoinFetch(appDAO);
-			updateInstructor(appDAO);
+			//updateInstructor(appDAO);
+			updateCourse(appDAO);
 		};
 	}
+
+	private void updateCourse(AppDAO appDAO) {
+		String id = "10";
+		System.out.println("Finding course id : " + id);
+		Course course = appDAO.findCourseById(id);
+		course.setTitle("Fitness");
+		appDAO.updateCourse(course);
+		System.out.println("Update completed");
+	}
+
+
 
 	private void updateInstructor(AppDAO appDAO) {
 		String id = "1";
