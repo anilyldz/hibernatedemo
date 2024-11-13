@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 @SpringBootApplication
@@ -31,8 +32,17 @@ public class HibernatedemoApplication {
 			//updateCourse(appDAO);
 			//deleteInstructor(appDAO);
 			//deleteCourse(appDAO);
-			createCourseAndReviews(appDAO);
+			//createCourseAndReviews(appDAO);
+			findCourseAndReviews(appDAO);
 		};
+	}
+
+	private void findCourseAndReviews(AppDAO appDAO) {
+		String id = "10";
+		System.out.println("Finding course id : " + id);
+		Course course = appDAO.findCourseAndReviewsByCourseId(id);
+		System.out.println("Course : " + course.toString());
+		System.out.println("Reviews : " + course.getReviews());
 	}
 
 	private void createCourseAndReviews(AppDAO appDAO) {
