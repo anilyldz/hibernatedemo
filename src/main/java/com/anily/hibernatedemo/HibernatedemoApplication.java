@@ -4,6 +4,7 @@ import com.anily.hibernatedemo.dao.AppDAO;
 import com.anily.hibernatedemo.entity.Course;
 import com.anily.hibernatedemo.entity.Instructor;
 import com.anily.hibernatedemo.entity.InstructorDetail;
+import com.anily.hibernatedemo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,7 +31,18 @@ public class HibernatedemoApplication {
 			//updateCourse(appDAO);
 			//deleteInstructor(appDAO);
 			//deleteCourse(appDAO);
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+		Course course = new Course("Spring Boot");
+		course.addReview(new Review("Great course, loved it!!"));
+		course.addReview(new Review("Cool course, job well done!!"));
+		course.addReview(new Review("What a dumb course, you are suck"));
+		System.out.println("Saving course");
+		appDAO.saveCourse(course);
+		System.out.println("Saving course completed");
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
