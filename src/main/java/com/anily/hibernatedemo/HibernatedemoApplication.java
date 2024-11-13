@@ -29,7 +29,7 @@ public class HibernatedemoApplication {
 			//updateInstructor(appDAO);
 			//updateCourse(appDAO);
 			//deleteInstructor(appDAO);
-			deleteCourse(appDAO);
+			//deleteCourse(appDAO);
 		};
 	}
 
