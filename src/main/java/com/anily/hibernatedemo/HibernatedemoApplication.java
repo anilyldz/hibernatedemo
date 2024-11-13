@@ -33,9 +33,16 @@ public class HibernatedemoApplication {
 			//deleteInstructor(appDAO);
 			//deleteCourse(appDAO);
 			//createCourseAndReviews(appDAO);
-			findCourseAndReviews(appDAO);
+			//findCourseAndReviews(appDAO);
+			deleteCourseAndReviews(appDAO);
 		};
 	}
+
+	private void deleteCourseAndReviews(AppDAO appDAO) {
+		String id = "11";
+		appDAO.deleteCourseById(id);
+	}
+
 
 	private void findCourseAndReviews(AppDAO appDAO) {
 		String id = "10";
