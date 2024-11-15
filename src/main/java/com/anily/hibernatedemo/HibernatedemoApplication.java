@@ -34,7 +34,7 @@ public class HibernatedemoApplication {
 			//deleteCourse(appDAO);
 			//createCourseAndReviews(appDAO);
 			//findCourseAndReviews(appDAO);
-			deleteCourseAndReviews(appDAO);
+			//deleteCourseAndReviews(appDAO);
 		};
 	}
 
