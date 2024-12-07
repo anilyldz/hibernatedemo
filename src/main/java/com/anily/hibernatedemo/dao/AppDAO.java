@@ -3,6 +3,7 @@ package com.anily.hibernatedemo.dao;
 import com.anily.hibernatedemo.entity.Course;
 import com.anily.hibernatedemo.entity.Instructor;
 import com.anily.hibernatedemo.entity.InstructorDetail;
+import com.anily.hibernatedemo.entity.Student;
 
 import java.util.List;
 
@@ -35,5 +36,7 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(String id);
 
     Course findCourseAndStudentsByCourseId(String id);
+
+    Student findStudentAndCoursesByStudentId(String id);
 
 }

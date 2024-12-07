@@ -3,6 +3,7 @@ package com.anily.hibernatedemo.dao;
 import com.anily.hibernatedemo.entity.Course;
 import com.anily.hibernatedemo.entity.Instructor;
 import com.anily.hibernatedemo.entity.InstructorDetail;
+import com.anily.hibernatedemo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,6 +123,17 @@ public class AppDAOImpl implements AppDAO {
                 "select c from Course c "
                         + "JOIN FETCH c.students "
                         + "where c.id = :data", Course.class);
+
+        query.setParameter("data", id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(String id) {
+        TypedQuery<Student> query = entityManager.createQuery(
+                "select s from Student s "
+                        + "JOIN FETCH s.courses "
+                        + "where s.id = :data", Student.class);
 
         query.setParameter("data", id);
         return query.getSingleResult();

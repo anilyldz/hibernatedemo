@@ -20,7 +20,8 @@ public class HibernatedemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			findCourseAndStudents(appDAO);
+			findStudentAndCourses(appDAO);
+			//findCourseAndStudents(appDAO);
 			//createCoursesAndStudents(appDAO);
 			//createInstructor(appDAO);
 			//createInstructorWithCourses(appDAO);
@@ -35,6 +36,12 @@ public class HibernatedemoApplication {
 			//findCourseAndReviews(appDAO);
 			//deleteCourseAndReviews(appDAO);
 		};
+	}
+
+	public void findStudentAndCourses(AppDAO appDAO) {
+		String id = "1";
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(id);
+		System.out.println("Finding Course and associated Students: " + tempStudent + " " + tempStudent.getCourses());
 	}
 
 
