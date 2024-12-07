@@ -1,10 +1,7 @@
 package com.anily.hibernatedemo;
 
 import com.anily.hibernatedemo.dao.AppDAO;
-import com.anily.hibernatedemo.entity.Course;
-import com.anily.hibernatedemo.entity.Instructor;
-import com.anily.hibernatedemo.entity.InstructorDetail;
-import com.anily.hibernatedemo.entity.Review;
+import com.anily.hibernatedemo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +20,7 @@ public class HibernatedemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
+			createCoursesAndStudents(appDAO);
 			//createInstructor(appDAO);
 			//createInstructorWithCourses(appDAO);
 			//findInstructorWithCourses(appDAO);
@@ -36,6 +34,19 @@ public class HibernatedemoApplication {
 			//findCourseAndReviews(appDAO);
 			//deleteCourseAndReviews(appDAO);
 		};
+	}
+
+	public void createCoursesAndStudents(AppDAO appDAO) {
+		Course tempCourse = new Course("Pacman - How To Score One Million Points");
+
+		Student student = new Student("John", "Doe", "john@doe.com");
+		Student student2 = new Student("Mary", "White", "mary@white.com");
+
+		tempCourse.addStudent(student);
+		tempCourse.addStudent(student2);
+
+		System.out.println("Saving course and associated students: " + tempCourse + " " + tempCourse.getStudents());
+		appDAO.saveCourse(tempCourse);
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
