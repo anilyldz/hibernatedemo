@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import javax.sound.midi.Soundbank;
 import java.util.List;
 
 @SpringBootApplication
@@ -20,7 +19,8 @@ public class HibernatedemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			findStudentAndCourses(appDAO);
+			addMoreCoursesForStudent(appDAO);
+			//findStudentAndCourses(appDAO);
 			//findCourseAndStudents(appDAO);
 			//createCoursesAndStudents(appDAO);
 			//createInstructor(appDAO);
@@ -36,6 +36,17 @@ public class HibernatedemoApplication {
 			//findCourseAndReviews(appDAO);
 			//deleteCourseAndReviews(appDAO);
 		};
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		String id = "2";
+		Student student = appDAO.findStudentAndCoursesByStudentId(id);
+		Course course1 = new Course("Rubik's Cube - How to speed it");
+		Course course2 = new Course("Atari 2600 - Game Development");
+		student.addCourse(course1);
+		student.addCourse(course2);
+		System.out.println("Updating Student and associated Course: " + student + " " + student.getCourses());
+		appDAO.updateStudent(student);
 	}
 
 	public void findStudentAndCourses(AppDAO appDAO) {
