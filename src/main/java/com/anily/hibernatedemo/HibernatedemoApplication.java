@@ -19,7 +19,8 @@ public class HibernatedemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			addMoreCoursesForStudent(appDAO);
+			deleteSudent(appDAO);
+			//addMoreCoursesForStudent(appDAO);
 			//findStudentAndCourses(appDAO);
 			//findCourseAndStudents(appDAO);
 			//createCoursesAndStudents(appDAO);
@@ -37,6 +38,13 @@ public class HibernatedemoApplication {
 			//deleteCourseAndReviews(appDAO);
 		};
 	}
+
+	private void deleteSudent(AppDAO appDAO) {
+		String id = "1";
+		System.out.println("Deleting Student id: " + id);
+		appDAO.deleteStudent(id);
+	}
+
 
 	private void addMoreCoursesForStudent(AppDAO appDAO) {
 		String id = "2";
